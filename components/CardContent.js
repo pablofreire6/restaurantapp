@@ -1,22 +1,20 @@
 import React from 'react';
-import {Text, StyleSheet, Image, View, ScrollView} from 'react-native';
+import {Text, StyleSheet, ImageBackground, View} from 'react-native';
 import {Card, CardItem, Body} from 'native-base';
 
-const CardContent = () => {
+const CardContent = ({title, image, price, description}) => {
   return (
     <Card>
       <CardItem>
         <Body style={styles.cardBody}>
-          <Image
-            source={require('../images/burger1.png')}
-            style={styles.mainImage}
-          />
+          <ImageBackground source={{uri: image}} style={styles.mainImage}>
+            <View style={styles.priceContainer}>
+              <Text style={styles.price}>${price}</Text>
+            </View>
+          </ImageBackground>
           <View style={styles.textContainer}>
-            <Text style={styles.mainTitle}>King Size Burger</Text>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit
-              amet ipsum laoreet, molestie urna quis
-            </Text>
+            <Text style={styles.mainTitle}>{title}</Text>
+            <Text>{description}</Text>
           </View>
         </Body>
       </CardItem>
@@ -39,11 +37,21 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 10,
   },
-
   mainTitle: {
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 30,
+  },
+  price: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  priceContainer: {
+    width: 60,
+    padding: 5,
+    margin: 5,
+    backgroundColor: '#3cb371',
   },
 });
 

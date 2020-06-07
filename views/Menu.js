@@ -10,13 +10,12 @@ const Menu = () => {
   const {getProducts, menu} = useContext(FirebaseContext);
 
   useEffect(() => {
-    // getProducts();
+    getProducts();
   }, []);
   return (
     <Container style={[globalStyles.container, styles.container]}>
       <Content style={styles.content}>
-        <CardContent />
-        <Text style={styles.subTitle}>SPECIAL OFFER</Text>
+        <Text style={styles.subTitle}>SPECIAL OFFERS</Text>
         <ScrollView horizontal>
           <View>
             <Image
@@ -37,7 +36,19 @@ const Menu = () => {
             />
           </View>
         </ScrollView>
-        <CardContent />
+        {menu &&
+          menu.map(item => {
+            const {id, nombre, imagen, precio, descripcion} = item;
+            return (
+              <CardContent
+                key={id}
+                title={nombre}
+                image={imagen}
+                price={precio}
+                description={descripcion}
+              />
+            );
+          })}
       </Content>
       <FooterMenu />
     </Container>
