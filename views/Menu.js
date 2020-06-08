@@ -42,6 +42,7 @@ const Menu = () => {
             return (
               <CardContent
                 key={id}
+                id={id}
                 title={nombre}
                 image={imagen}
                 price={precio}

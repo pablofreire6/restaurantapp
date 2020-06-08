@@ -1,11 +1,19 @@
 import React from 'react';
 import {Text, StyleSheet, ImageBackground, View} from 'react-native';
 import {Card, CardItem, Body} from 'native-base';
+import {useNavigation} from '@react-navigation/native';
 
-const CardContent = ({title, image, price, description}) => {
+const CardContent = ({id, title, image, price, description}) => {
+  const navigation = useNavigation();
   return (
     <Card>
-      <CardItem>
+      <CardItem
+        button
+        onPress={() =>
+          navigation.navigate('ItemDetail', {
+            id: id,
+          })
+        }>
         <Body style={styles.cardBody}>
           <ImageBackground source={{uri: image}} style={styles.mainImage}>
             <View style={styles.priceContainer}>

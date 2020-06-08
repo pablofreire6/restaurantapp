@@ -5,7 +5,6 @@ import FirebaseReducer from './firebaseReducer';
 import FirebaseContext from './firebaseContext';
 
 import {GET_PRODUCTS_SUCCESS} from '../../types';
-import firebaseConfig from '../../firebase/config';
 
 const FirebaseState = props => {
   const initialState = {
